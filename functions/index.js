@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-// const usersApp = require("./usersApp");
+const locations = require("./locations");
 // const paymentsApp = require("./paymentsApp");
 
 // /slots/
@@ -7,5 +7,5 @@ const functions = require("firebase-functions");
 // /complains/
 // /users/:id
 
-exports.users = functions.https.onRequest(usersApp);
-exports.payments = functions.https.onRequest(paymentsApp);
+exports.locations = functions.https.onRequest(locations);
+// exports.payments = functions.https.onRequest(paymentsApp);
