@@ -1,5 +1,5 @@
 # vaccination-point-management
-Cegedim hackathon - vaccination point management
+hackathon - vaccination point management
 
 Using Firebase functions and MongoDB data base to serve the back end. 
 
