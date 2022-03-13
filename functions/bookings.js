@@ -4,7 +4,6 @@ const db = admin.firestore();
 const bookings = express();
 
 const cors = require("cors");
-
 bookings.use(cors({origin: true}));
 
 bookings.get("/", async (req, res) => {
