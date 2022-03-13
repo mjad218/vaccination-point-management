@@ -12,4 +12,9 @@ users.post("/", async (req, res) => {
   res.status(200).send(result);
 });
 
+users.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    const user =  await db.collection("users").doc(id).get();
+    res.status(200).send(user.data());
+  });
 module.exports = users;
