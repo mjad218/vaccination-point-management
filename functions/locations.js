@@ -9,15 +9,6 @@ const cors = require("cors");
 
 locations.use(cors({origin: true}));
 
-// locations.get("/:id", async (req, res) => {
-//   const snapshot = await db.collection("users").doc(req.params.id).get();
-//   const user = {...snapshot.data()};
-//   if (!snapshot.exists) {
-//     res.status(404).send();
-//   }
-//   res.status(200).send(JSON.stringify(user));
-// });
-
 locations.get("/", async (req, res) => {
     const snapshot = await db.collection("locations").get();
     const locations = [];
@@ -27,11 +18,4 @@ locations.get("/", async (req, res) => {
      });
     res.status(200).send(JSON.stringify(locations));
   });
-
-// locations.post("/", async (req, res) => {
-//   const user = req.body;
-//   await db.collection("users").doc(`${user.blogID}`).set(user);
-//   res.status(200).send();
-// });
-
 module.exports = locations;

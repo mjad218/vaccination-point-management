@@ -29,8 +29,9 @@ bookings.get("/:id", async (req, res) => {
 });
 bookings.post("/", async (req, res) => {
   const booking = req.body;
-  await db.collection("bookings").set(booking);
-  res.status(200).send();
+  console.log(booking);
+  const result =  await db.collection("bookings").doc().set(booking);
+  res.status(200).send(result);
 });
 
 module.exports = bookings;
