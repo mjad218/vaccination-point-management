@@ -11,7 +11,7 @@ bookings.get("/", async (req, res) => {
     const snapshot = await db.collection("bookings").get();
     const bookings = [];
     snapshot.forEach(doc => {
-        const document = { [doc.id]: doc.data() };
+        const document = {id : doc.id, ...doc.data() };
         bookings.push(document);
      });
     res.status(200).send(JSON.stringify(bookings));
@@ -22,7 +22,7 @@ bookings.get("/:id", async (req, res) => {
   const snapshot = await db.collection("bookings").where("location", "=", location).get();
   const bookings = [];
   snapshot.forEach(doc => {
-      const document = { [doc.id]: doc.data() };
+      const document = {id : doc.id, ...doc.data() };
       bookings.push(document);
    });
   res.status(200).send(JSON.stringify(bookings));

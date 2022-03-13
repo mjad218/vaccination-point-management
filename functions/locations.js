@@ -22,7 +22,7 @@ locations.get("/", async (req, res) => {
     const snapshot = await db.collection("locations").get();
     const locations = [];
     snapshot.forEach(doc => {
-        const document = { [doc.id]: doc.data() };
+        const document = {id : doc.id, ...doc.data() };
         locations.push(document);
      });
     res.status(200).send(JSON.stringify(locations));
