@@ -1,30 +1,30 @@
 const express = require("express");
 const admin = require("firebase-admin");
 const db = admin.firestore();
-const chatting = express();
+const consultation = express();
 
 const cors = require("cors");
 
-chatting.use(cors({origin: true}));
+consultation.use(cors({origin: true}));
 
-chatting.get("/", async (req, res) => {
+consultation.get("/", async (req, res) => {
     const snapshot = await db.collection("consultation").get();
-    const chatting = [];
+    const consultation = [];
     snapshot.forEach(doc => {
         const document = {id : doc.id, ...doc.data() };
-        chatting.push(document);
+        consultation.push(document);
      });
-    res.status(200).send(JSON.stringify(chatting));
+    res.status(200).send(JSON.stringify(consultation));
 });
 
-chatting.put("/:id", async (req, res) => {
+consultation.put("/:id", async (req, res) => {
   const id = req.params.id;
   const chat = req.body;
-  const snapshot = await db.collection("chatting").doc(id).set(chat);
+  const snapshot = await db.collection("consultation").doc(id).update(chat);
   res.status(200).send(JSON.stringify(chat));
 });
 
-chatting.post("/", async (req, res) => {
+consultation.post("/", async (req, res) => {
   const chat = req.body;
   console.log(chat);
   const result =  await db.collection("consultation").doc().set(chat);

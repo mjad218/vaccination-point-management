@@ -20,7 +20,7 @@ complains.get("/", async (req, res) => {
 complains.put("/:id", async (req, res) => {
     const id = req.params.id;
     const complain = req.body;
-    const snapshot = await db.collection("chatting").doc(id).set(complain);
+    const snapshot = await db.collection("complains").doc(id).update(complain);
     res.status(200).send(JSON.stringify(complain));
 });
 
