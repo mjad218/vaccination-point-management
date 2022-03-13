@@ -28,8 +28,8 @@ bookings.get("/:id", async (req, res) => {
   res.status(200).send(JSON.stringify(bookings));
 });
 bookings.post("/", async (req, res) => {
-  const user = req.body;
-  await db.collection("users").doc(`${user.blogID}`).set(user);
+  const booking = req.body;
+  await db.collection("bookings").set(booking);
   res.status(200).send();
 });
 
